@@ -62,7 +62,7 @@ ifneq ($(filter $(shell uname),FreeBSD NetBSD DragonFly),)
 	PCLIBDIR := $(PREFIX)/libdata/pkgconfig
 endif
 
-all: lib$(LANGUAGE_NAME).a
+all: lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).so $(LANGUAGE_NAME).pc
 
 lib$(LANGUAGE_NAME).a: $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
