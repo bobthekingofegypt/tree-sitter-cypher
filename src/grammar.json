@@ -12003,5 +12003,6 @@
     "namespace",
     "variable_in_parens"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

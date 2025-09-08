@@ -19,12 +19,5 @@
       "repository": "git+https://github.com/taekwombo/tree-sitter-cypher.git"
     }
   },
-  "bindings": {
-    "c": true,
-    "go": true,
-    "node": true,
-    "python": true,
-    "rust": true,
-    "swift": true
-  }
+  "bindings": {}
 }

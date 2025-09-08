@@ -22,7 +22,7 @@ readme = "README.md"
 Homepage = "git+https://github.com/taekwombo/tree-sitter-cypher.git"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.22"]
+core = ["tree-sitter~=0.25"]
 
 [tool.cibuildwheel]
 build = "cp39-*"
