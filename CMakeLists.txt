@@ -52,14 +52,23 @@ include(GNUInstallDirs)
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
         FILES_MATCHING PATTERN "*.h")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-cypher.pc"
-        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
+# install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-cypher.pc"
+#         DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
 install(TARGETS tree-sitter-cypher
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+        EXPORT tree-sitter-cypher-targets
+        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+        INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+        )
 
 file(GLOB QUERIES queries/*.scm)
 install(FILES ${QUERIES}
         DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/cypher")
+
+install (EXPORT tree-sitter-cypher-targets
+        FILE tree-sitter-cypher-config.cmake
+        NAMESPACE tree-sitter-cypher::
+        DESTINATION lib/cmake/tree-sitter-cypher)
 
 add_custom_target(ts-test "${TREE_SITTER_CLI}" test
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
